@@ -1,0 +1,185 @@
+name: "ResNet-50"
+
+input: "data"
+input_dim: 1
+input_dim: 256
+input_dim: 16
+input_dim: 16
+
+mem_param {
+    optimize_test: true
+}
+#----------------------transfer gate-------------
+layer {
+    bottom: "data"
+    top: "res2b_trans_1"
+    name: "conv_transfer_1"
+    type: "Convolution"
+    convolution_param {
+        num_output: 256
+        kernel_size: 3
+        pad: 1
+        stride: 1
+        bias_term: true
+        weight_filler {
+          type: "xavier"
+        }
+        bias_filler {
+          type: "constant"
+          value: 0
+        }
+    }   
+    param {
+        lr_mult: 1
+        decay_mult: 1
+    }
+    param {
+        lr_mult: 1
+        decay_mult: 0
+    }
+}
+
+layer {
+    bottom: "res2b_trans_1"
+    top: "res2b_trans_1"
+    name: "res2b_trans_1_relu"
+    type: "ReLU"
+}
+
+layer {
+    bottom: "res2b_trans_1"
+    top: "res2b_trans_2"
+    name: "conv_transfer_2"
+    type: "Convolution"
+    convolution_param {
+        num_output: 256
+        kernel_size: 3
+        pad: 1
+        stride: 2
+        bias_term: true
+        weight_filler {
+          type: "xavier"
+        }
+        bias_filler {
+          type: "constant"
+          value: 0
+        }
+    }   
+    param {
+        lr_mult: 1
+        decay_mult: 1
+    }
+    param {
+        lr_mult: 1
+        decay_mult: 0
+    }
+}
+
+layer {
+    bottom: "res2b_trans_2"
+    top: "res2b_trans_2"
+    name: "res2b_trans_2_relu"
+    type: "ReLU"
+}
+
+layer {
+    bottom: "res2b_trans_2"
+    top: "res2b_trans_3"
+    name: "conv_transfer_3"
+    type: "Convolution"
+    convolution_param {
+        num_output: 256
+        kernel_size: 3
+        pad: 1
+        stride: 1
+        bias_term: true
+        weight_filler {
+          type: "xavier"
+        }
+        bias_filler {
+          type: "constant"
+          value: 0
+        }
+    }   
+    param {
+        lr_mult: 1
+        decay_mult: 1
+    }
+    param {
+        lr_mult: 1
+        decay_mult: 0
+    }
+}
+
+layer {
+    bottom: "res2b_trans_3"
+    top: "res2b_trans_3"
+    name: "res2b_trans_3_relu"
+    type: "ReLU"
+}
+
+layer {
+    bottom: "res2b_trans_3"
+    top: "res2b_trans_4"
+    name: "conv_transfer_4"
+    type: "Convolution"
+    convolution_param {
+        num_output: 256
+        kernel_size: 3
+        pad: 1
+        stride: 1
+        bias_term: true
+        weight_filler {
+          type: "xavier"
+        }
+        bias_filler {
+          type: "constant"
+          value: 0
+        }
+    }   
+    param {
+        lr_mult: 1
+        decay_mult: 1
+    }
+    param {
+        lr_mult: 1
+        decay_mult: 0
+    }
+}
+
+
+layer {
+    bottom: "res2b_trans_4"
+    top: "res2b_trans_4"
+    name: "res2b_trans_4_relu"
+    type: "ReLU"
+}
+
+layer {
+    bottom: "res2b_trans_4"
+    top: "res2b_trans_5"
+    name: "conv_transfer_5"
+    type: "Convolution"
+    convolution_param {
+        num_output: 256
+        kernel_size: 1
+        pad: 0
+        stride: 1
+        bias_term: true
+        weight_filler {
+          type: "xavier"
+        }
+        bias_filler {
+          type: "constant"
+          value: 0
+        }
+    }   
+    param {
+        lr_mult: 1
+        decay_mult: 1
+    }
+    param {
+        lr_mult: 1
+        decay_mult: 0
+    }
+}

@@ -1,0 +1,13 @@
+net: "model/res_pool2/test.prototxt"
+base_lr: 0.08
+lr_policy: "step"
+gamma: 0.8
+stepsize: 50000
+display: 100
+max_iter: 2000000
+momentum: 0.9
+weight_decay: 0.0001
+# We disable standard caffe solver snapshotting and implement our own snapshot
+snapshot: 0
+#debug_info: true
+
