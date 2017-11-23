@@ -34,7 +34,7 @@ Steps to run the **test** code:
 
 ## Train Your Own Model
 
-This part will be released around the end of October, 2017.
+Still in progress, this part will be released later.
 
 
 ## FAQ
